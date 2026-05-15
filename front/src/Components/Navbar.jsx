@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 function Navbar({ cart }) {
   return (
     <nav className="sticky top-0 z-50 flex justify-between items-center px-10 py-4 bg-black text-white shadow-md">
-      <h2 className="text-xl font-bold">MyShop</h2>
+      <Link to="/" className="text-xl font-bold">
+        MyShop
+      </Link>
 
       <div className="flex gap-6">
-        <Link to="/home" className="hover:text-gray-400 transition">
+        <Link to="/" className="hover:text-gray-400 transition">
           Home
         </Link>
         <Link to="/products" className="hover:text-gray-400 transition">
@@ -19,7 +21,5 @@ function Navbar({ cart }) {
     </nav>
   );
 }
-
-
 
 export default Navbar;

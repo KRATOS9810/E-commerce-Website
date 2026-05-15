@@ -8,16 +8,18 @@ import Checkout from "./pages/Checkout";
 import Navbar from "./Components/Navbar";
 import "./App.css";
 
+import { ToastContainer, toast } from "react-toastify";
 function App() {
-  const [count, setCount] = useState(0);
   const [cart, setCart] = useState([]);
 
   const addToCart = (product) => {
-    setCart([...cart, product]); // simple add
+    setCart([...cart, product]);
+    toast.success("Product Added"); // simple add
   };
   const removeFromCart = (index) => {
     const updatedCart = cart.filter((_, i) => i !== index);
     setCart(updatedCart);
+    toast.success("Product Removed");
   };
   return (
     <div className="bg-gray-100 min-h-screen">
@@ -29,7 +31,7 @@ function App() {
       </div>
       <Routes>
         <Route path="/products" element={<Products></Products>} />
-        <Route path="/home" element={<Home addToCart={addToCart}></Home>} />
+        <Route path="/" element={<Home addToCart={addToCart}></Home>} />
         <Route
           path="/cart"
           element={<Cart cart={cart} removeFromCart={removeFromCart}></Cart>}
@@ -37,6 +39,7 @@ function App() {
         <Route path="/checkout" element={<Checkout></Checkout>} />
         <Route path="/product/:id" element={<Products />} />
       </Routes>
+      <ToastContainer />
     </div>
   );
 }

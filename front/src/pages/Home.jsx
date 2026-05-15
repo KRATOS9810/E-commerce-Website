@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+
 import axios from "axios";
 import { Link } from "react-router-dom";
 
@@ -10,8 +11,6 @@ function Home({ addToCart }) {
       .get("https://fakestoreapi.com/products")
       .then((res) => setProducts(res.data));
   }, []);
- 
-  
 
   if (!products.length) {
     return <p className="text-center mt-10">Loading...</p>;
