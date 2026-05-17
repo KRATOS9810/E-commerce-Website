@@ -6,11 +6,13 @@ import Home from "./pages/Home";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import Navbar from "./Components/Navbar";
+import About from "./pages/About";
 import "./App.css";
 
 import { ToastContainer, toast } from "react-toastify";
 function App() {
   const [cart, setCart] = useState([]);
+  const [Search, setSearch] = useState("");
 
   const addToCart = (product) => {
     setCart([...cart, product]);
@@ -27,15 +29,20 @@ function App() {
         <Navbar
           className="fixed top-0 left-0 w-full bg-black text-white z-50"
           cart={cart}
+          giveSearch={setSearch}
         ></Navbar>
       </div>
       <Routes>
         <Route path="/products" element={<Products></Products>} />
-        <Route path="/" element={<Home addToCart={addToCart}></Home>} />
+        <Route
+          path="/"
+          element={<Home addToCart={addToCart} takeSearch={Search}></Home>}
+        />
         <Route
           path="/cart"
           element={<Cart cart={cart} removeFromCart={removeFromCart}></Cart>}
         />
+        <Route path="/about" element={<About></About>} />
         <Route path="/checkout" element={<Checkout></Checkout>} />
         <Route path="/product/:id" element={<Products />} />
       </Routes>

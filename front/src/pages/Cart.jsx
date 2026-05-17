@@ -1,6 +1,6 @@
-function Cart({ cart = [], removeFromCart  }) {
+function Cart({ cart = [], removeFromCart }) {
   const total = cart.reduce((acc, item) => acc + item.price, 0);
-  
+
   return (
     <div className="bg-gray-100 min-h-screen p-6">
       <h1 className="text-2xl font-bold mb-6">Your Cart</h1>
@@ -14,7 +14,6 @@ function Cart({ cart = [], removeFromCart  }) {
               key={index}
               className="bg-white p-4 rounded-xl shadow flex justify-between items-center"
             >
-              {/* Left */}
               <div className="flex items-center gap-4">
                 <img src={item.image} className="h-16 w-16 object-contain" />
                 <div>
@@ -23,7 +22,6 @@ function Cart({ cart = [], removeFromCart  }) {
                 </div>
               </div>
 
-              {/* Right */}
               <button
                 onClick={() => removeFromCart(index)}
                 className="text-red-500 hover:underline"
